@@ -1,0 +1,199 @@
+<html>
+  <head>
+    <title>Heart Disease Prediction</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      label {
+        width: 48%;
+      }
+
+      input {
+        width: 48%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Heart Risk Prediction</h1>
+      <form id="diabetes-form" method="post" action="/predict">
+        <div>
+          <label for="Age">Age:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input type="text" id="age" name="age" required />
+        </div>
+    
+        <div>     
+         <label for="Oldpeak">Oldpeak:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input type="text" id="oldpeak" name="oldpeak" required />
+        </div>
+
+        <div> 
+          <label for="Trestbps">Trestbps:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" id="trestbps" name="trestbps" required />
+        </div>
+
+        <div>
+          <label for="Cholestrol">Cholestrol:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input type="text" id="chol" name="chol" required />
+        </div> 
+        
+        <div>
+          <label for="Max Heart Rate Achieved">Max Heart Rate Achieved:</label>
+         <input type="text" id="thalach" name="thalach" required />
+        </div>
+
+        <br><br>
+
+        <div>
+          <label for="Fluroscopy Result">Fluroscopy Result:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input type="text" id="ca" name="ca" required />
+        </div>
+        
+        <br><br>
+
+        <div>
+         <label for="Thalassemia"> Thalassemia </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <select id="thal" name="thal">
+         <option disabled selected value> -- Select an option -- </option>
+         <option value="0">Normal</option>
+         <option value="1">Fixed Defect</option>
+         <option value="2">Reversable Defect</option>
+         </select>
+        </div>
+        <br><br>
+
+        <div>
+         <label for="Fasting Blood Sugar"> Fasting Blood Sugar </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <select id="fbs" name="fbs">
+         <option disabled selected value> -- Select an option -- </option>
+         <option value="0">Normal</option>
+         <option value="1">High</option>
+         </select>
+        </div>
+        <br><br>
+
+      
+
+       <div>
+         <label for="Gender"> Gender </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <select id="sex" name="sex">
+         <option disabled selected value> -- Select an option -- </option>
+         <option value="0">Female</option>
+         <option value="1">Male</option>
+         </select>
+       </div>
+       <br><br>
+
+
+       <div>
+         <label for="CP"> Chest Pain Type </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <select id="cp" name="cp">
+         <option disabled selected value> -- Select an option -- </option>
+         <option value="0">Typical Angina</option>
+         <option value="1">Atypical Angina</option>
+         <option value="2">Non Anginal Pain</option>
+         <option value="3">Asymptomatic</option>
+         </select>
+        </div>
+        <br><br>
+
+      
+        <div>
+         <label for="Resting Electrocardiography"> Resting Electrocardiography </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <select id="restecg" name="restecg">
+         <option disabled selected value> -- Select an option -- </option>
+         <option value="0">Normal</option>
+         <option value="1">ST-T Wave Abnormality</option>
+         <option value="2">Left Ventricular Hypertrophy</option>
+         </select>
+        </div>
+
+
+        <br><br>
+
+
+       <div>
+       <label for="Exercise Induced Angina"> Exercise Induced Angina </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <select id="exang" name="exang">
+        <option disabled selected value> -- Select an option -- </option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+       </select>
+       </div>
+
+     <br><br>
+
+     <div>
+       <label for="Slope"> Slope </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select id="slope" name="slope">
+        <option disabled selected value> -- Select an option -- </option>
+        <option value="0">Unsloping</option>
+        <option value="1">Flat</option>
+        <option value="2">Downsloping</option>
+        </select>
+     </div>
+
+        
+
+        <!-- <input type="submit" value="Predict" /> -->
+        <button type="submit">Predict</button>
+        <p style="text-align:center;"><input type="submit", value = "Submit" style="height:30px; width:70px"></p>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <!-- <script type="text/javascript" src="script.js"></script> -->
+  </body>
+</html>
